@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Produto {
@@ -40,5 +41,17 @@ public class Produto {
 
     public void setListaFornecedor(List<Fornecedor> listaFornecedor) {
         this.listaFornecedor = listaFornecedor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Produto produto)) return false;
+        return Objects.equals(getId(), produto.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
 public class NotaCompraItem {
@@ -67,5 +68,17 @@ public class NotaCompraItem {
 
     public void setValorCompraProduto(BigDecimal valorCompraProduto) {
         this.valorCompraProduto = valorCompraProduto;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof NotaCompraItem that)) return false;
+        return Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }

@@ -6,6 +6,7 @@ import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class NotaCompra {
@@ -58,5 +59,17 @@ public class NotaCompra {
 
     public void setListaNotaCompraItem(List<NotaCompraItem> listaNotaCompraItem) {
         this.listaNotaCompraItem = listaNotaCompraItem;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof NotaCompra that)) return false;
+        return Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }
