@@ -23,6 +23,7 @@ public class Fornecedor {
     }
 
     public Fornecedor(@NotNull @Size(min = 2, max = 200) String razaoSocial) {
+        super();
         this.razaoSocial = razaoSocial;
     }
 
