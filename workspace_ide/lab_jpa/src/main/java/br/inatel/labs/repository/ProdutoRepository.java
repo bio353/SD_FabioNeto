@@ -1,4 +1,4 @@
-package repository;
+package br.inatel.labs.repository;
 
 import br.inatel.labs.entity.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
