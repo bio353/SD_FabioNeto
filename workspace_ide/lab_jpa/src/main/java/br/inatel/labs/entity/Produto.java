@@ -1,4 +1,4 @@
-package br.inatel.labs.labjpa.entity;
+package br.inatel.labs.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -41,6 +41,11 @@ public class Produto {
 
     public void setListaFornecedor(List<Fornecedor> listaFornecedor) {
         this.listaFornecedor = listaFornecedor;
+    }
+
+    // gerar construtor que só recebe descricao
+    public Produto(String descricao) {
+        this.descricao = descricao;
     }
 
     @Override

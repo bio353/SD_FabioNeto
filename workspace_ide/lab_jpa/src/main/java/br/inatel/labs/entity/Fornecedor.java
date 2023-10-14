@@ -1,4 +1,4 @@
-package br.inatel.labs.labjpa.entity;
+package br.inatel.labs.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
