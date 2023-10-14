@@ -1,10 +1,10 @@
 package br.inatel.labs.service;
 
 import br.inatel.labs.entity.Produto;
+import br.inatel.labs.repository.ProdutoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.inatel.labs.repository.ProdutoRepository;
 
 import java.util.List;
 
