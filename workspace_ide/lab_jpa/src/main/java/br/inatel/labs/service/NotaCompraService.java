@@ -2,9 +2,10 @@ package br.inatel.labs.service;
 
 import br.inatel.labs.entity.NotaCompra;
 import br.inatel.labs.entity.NotaCompraItem;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import br.inatel.labs.repository.NotaCompraItemRepository;
+import br.inatel.labs.repository.NotaCompraRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,44 +13,43 @@ import java.util.List;
 @Service
 @Transactional
 public class NotaCompraService {
-    @PersistenceContext
-    private EntityManager entityManager;
+    @Autowired
+    private NotaCompraRepository notaCompraRepository;
+
+    @Autowired
+    private NotaCompraItemRepository notaCompraItemRepository;
 
     // NotaCompra
 
     public NotaCompra salvar(NotaCompra notaCompra) {
-        entityManager.merge(notaCompra);
-        return notaCompra;
+        return notaCompraRepository.save(notaCompra);
     }
 
     public NotaCompra buscarPeloId(Long id) {
-        return entityManager.find(NotaCompra.class, id);
+        return notaCompraRepository.findById(id).orElseThrow();
     }
 
     public NotaCompra buscarPeloIdComListaItem(Long id) {
-        NotaCompra notaCompra = entityManager.find(NotaCompra.class, id);
+        NotaCompra notaCompra = notaCompraRepository.findById(id).orElseThrow();
         notaCompra.getListaNotaCompraItem().size();
         return notaCompra;
     }
 
     public List<NotaCompra> listar() {
-        String jpql = "SELECT nc FROM NotaCompra nc";
-        return entityManager.createQuery(jpql, NotaCompra.class).getResultList();
+        return notaCompraRepository.findAll();
     }
 
     // NotaCompraItem
 
     public NotaCompraItem salvar(NotaCompraItem notaCompraItem) {
-        entityManager.merge(notaCompraItem);
-        return notaCompraItem;
+        return notaCompraItemRepository.save(notaCompraItem);
     }
 
     public NotaCompraItem buscarItemPeloId(Long id) {
-        return entityManager.find(NotaCompraItem.class, id);
+        return notaCompraItemRepository.findById(id).orElseThrow();
     }
 
     public List<NotaCompraItem> listarItem() {
-        String jpql = "SELECT nci FROM NotaCompraItem nci";
-        return entityManager.createQuery(jpql, NotaCompraItem.class).getResultList();
+        return notaCompraItemRepository.findAll();
     }
 }
