@@ -15,6 +15,8 @@ public class NotaCompraService {
     @PersistenceContext
     private EntityManager entityManager;
 
+    // NotaCompra
+
     public NotaCompra salvar(NotaCompra notaCompra) {
         entityManager.merge(notaCompra);
         return notaCompra;
@@ -24,12 +26,20 @@ public class NotaCompraService {
         return entityManager.find(NotaCompra.class, id);
     }
 
+    public NotaCompra buscarPeloIdComListaItem(Long id) {
+        NotaCompra notaCompra = entityManager.find(NotaCompra.class, id);
+        notaCompra.getListaNotaCompraItem().size();
+        return notaCompra;
+    }
+
     public List<NotaCompra> listar() {
         String jpql = "SELECT nc FROM NotaCompra nc";
         return entityManager.createQuery(jpql, NotaCompra.class).getResultList();
     }
 
-    public NotaCompraItem salvarItem(NotaCompraItem notaCompraItem) {
+    // NotaCompraItem
+
+    public NotaCompraItem salvar(NotaCompraItem notaCompraItem) {
         entityManager.merge(notaCompraItem);
         return notaCompraItem;
     }

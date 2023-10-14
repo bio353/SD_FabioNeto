@@ -72,9 +72,9 @@ class DataLoader {
         NotaCompraItem i2 = new NotaCompraItem(nc1, p2, new BigDecimal("1000.00"), 2);
         NotaCompraItem i3 = new NotaCompraItem(nc1, p3, new BigDecimal("500.00"), 2);
 
-        i1 = notaCompraService.salvarItem(i1);
-        i2 = notaCompraService.salvarItem(i2);
-        i3 = notaCompraService.salvarItem(i3);
+        i1 = notaCompraService.salvar(i1);
+        i2 = notaCompraService.salvar(i2);
+        i3 = notaCompraService.salvar(i3);
 
         List<NotaCompraItem> itens = notaCompraService.listarItem();
         itens.forEach(System.out::println);
