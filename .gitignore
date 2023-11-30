@@ -1,6 +1,8 @@
 # Misc
 */h2/
+.vscode/
 h2/
+target/
 
 # IntelliJ Idea
 */.idea/
