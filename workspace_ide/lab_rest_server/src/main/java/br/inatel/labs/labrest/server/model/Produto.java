@@ -8,9 +8,9 @@ public class Produto {
 
     private String descricao;
 
-    private Double preco;
+    private BigDecimal preco;
 
-    public Produto(Long id, String descricao, Double preco) {
+    public Produto(Long id, String descricao, BigDecimal preco) {
         super();
         this.id = id;
         this.descricao = descricao;
@@ -33,11 +33,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(Double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 

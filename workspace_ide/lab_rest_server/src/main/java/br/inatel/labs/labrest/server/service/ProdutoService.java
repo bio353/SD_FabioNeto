@@ -3,8 +3,8 @@ package br.inatel.labs.labrest.server.service;
 import br.inatel.labs.labrest.server.model.Produto;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +16,9 @@ public class ProdutoService {
 
     @PostConstruct
     private void setup() {
-        Produto p1 = new Produto(1L, "Furadeira", 230.00);
-        Produto p2 = new Produto(2L, "Serra Circular", 500.000);
-        Produto p3 = new Produto(3L, "Parafusadeira", 400.00);
+        Produto p1 = new Produto(1L, "Furadeira", new BigDecimal("230.00"));
+        Produto p2 = new Produto(2L, "Serra Circular", new BigDecimal("500.00"));
+        Produto p3 = new Produto(3L, "Parafusadeira", new BigDecimal("400.00"));
         produtos.add(p1);
         produtos.add(p2);
         produtos.add(p3);
